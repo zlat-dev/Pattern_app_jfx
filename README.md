@@ -22,45 +22,45 @@ L'espace de travail contient :
 ## Tasks
 
 ORGANISATION
-- ok [ une fenètre principale
-- ok [ une feuille de style en qss
-- ok [ layout conteneur et sous blocs (hors menu, tool, status) / 
-- ok [ une barre de status en bas avec :
-- ok --- un message timé
-- ok --- une barre de progression
-- ok --- un label status notification
-- ok --- un label status user
-- ok --- un label status timestamp du fichier de données
-- ok --- un label status du dernier item log
-- ok [ fichier conf pour les messages préenregistré (configparser)
-- ok [ fichier ini pour le programme (configparser)
-- ok [ une boite à outils (icones 32)
-- ok [ un menu (icones 32)
-- ok --- fichier / édition / A propos
-- ok --- les actions associées au menu et toolbar
-- ok [ une icone application (icones 512)
-- ok [ dans le layout mid-W
-- ok --- un Treeview pour les données json
-- ok --- un TreeView pour les dir
-- ok --- splitter pour séparer et ajuster
-- ok [ un journal d'évènement appli (file et stdout)
-- ok --- log file par jour
-- ok --- créer un journal de log et archiver les actions
-- ok --- nettoyer le msg info
-- ok [ fenetre modale création entité
-- ok [ fenetre modale création cible pour une entité
-- ok [ fenetre modale boite à propos
-- ok --- affiche le README file dans A propos
+---  une fenètre principale
+---  une feuille de style en css
+---  layout conteneur et sous blocs (hors menu, tool, status) / 
+---  une barre de status en bas avec :
+--- --- un message timé
+--- --- une barre de progression
+--- --- un label status notification
+--- --- un label status user
+--- --- un label status timestamp du fichier de données
+--- --- un label status du dernier item log
+---  fichier conf pour les messages préenregistré (configparser)
+---  fichier ini pour le programme (configparser)
+---  une boite à outils (icones 32)
+---  un menu (icones 32)
+--- --- fichier / édition / A propos
+--- --- les actions associées au menu et toolbar
+---  une icone application (icones 512)
+---  dans le layout mid-W
+--- --- un Treeview pour les données json
+--- --- un TreeView pour les dir
+--- --- splitter pour séparer et ajuster
+---  un journal d'évènement appli (file et stdout)
+--- --- log file par jour
+--- --- créer un journal de log et archiver les actions
+--- --- nettoyer le msg info
+---  fenetre modale création entité
+---  fenetre modale création cible pour une entité
+---  fenetre modale boite à propos
+--- --- affiche le README file dans A propos
 
 ACTION
-- ok [ message bienvenue
-- ok [ parser conf
-- ok [ logger
-- ok [ affiche dir
-- ok [ boite dialogue fermeture
-- ok [ fenetre modale création entité (via designer6)
-- ok [ fenetre modale création cible (via designer6)
-- ok [ fenetre modale A propos (via designer6)
+---  message bienvenue
+---  parser conf
+---  logger
+---  affiche dir
+---  boite dialogue fermeture
+---  fenetre modale création entité (via designer6)
+---  fenetre modale création cible (via designer6)
+---  fenetre modale A propos (via designer6)
 
 TODO
 - todo revoir box cible pour ajouter une cible à choisir parmi
