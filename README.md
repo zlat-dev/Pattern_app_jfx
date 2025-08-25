@@ -22,7 +22,8 @@ L'espace de travail contient :
 ## Tasks
 
 ORGANISATION
---- un splash
+OK- un splash (source https://coderscratchpad.com/creating-splash-screens-with-javafx/)
+--- splashscreen (https://gist.github.com/jewelsea/2305098)
 --- une vérif de l'appli pendant le splash
 --- une fenètre principale
 --- une feuille de style en css

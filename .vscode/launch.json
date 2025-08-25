@@ -6,6 +6,13 @@
     "configurations": [
         {
             "type": "java",
+            "name": "Lanceur",
+            "request": "launch",
+            "mainClass": "Pattern_app.Lanceur",
+            "projectName": "Pattern_app_jfx_fab6ea0e"
+        },
+        {
+            "type": "java",
             "name": "Pattern_app.Main",
             "request": "launch",
             "mainClass": "Pattern_app.Main",
