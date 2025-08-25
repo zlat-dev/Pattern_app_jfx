@@ -36,7 +36,7 @@ public class SplashScreen extends Preloader {
         // Image en fond du splash screen (un imageview aurait été possible mais sans progressbar)
         // background image
         BackgroundImage backgroundImage = new BackgroundImage(
-                new Image("/Pattern_app/ressources/desticraft.png"),
+                new Image("Ressources/desticraft.png"),
                 BackgroundRepeat.NO_REPEAT, BackgroundRepeat.NO_REPEAT,
                 BackgroundPosition.CENTER,
                 BackgroundSize.DEFAULT
