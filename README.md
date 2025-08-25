@@ -22,45 +22,47 @@ L'espace de travail contient :
 ## Tasks
 
 ORGANISATION
----  une fenètre principale
----  une feuille de style en css
----  layout conteneur et sous blocs (hors menu, tool, status) / 
----  une barre de status en bas avec :
+--- un splash
+--- une vérif de l'appli pendant le splash
+--- une fenètre principale
+--- une feuille de style en css
+--- layout conteneur et sous blocs (hors menu, tool, status) / 
+--- une barre de status en bas avec :
 --- --- un message timé
 --- --- une barre de progression
 --- --- un label status notification
 --- --- un label status user
 --- --- un label status timestamp du fichier de données
 --- --- un label status du dernier item log
----  fichier conf pour les messages préenregistré (configparser)
----  fichier ini pour le programme (configparser)
----  une boite à outils (icones 32)
----  un menu (icones 32)
+--- fichier conf pour les messages préenregistré (configparser)
+--- fichier ini pour le programme (configparser)
+--- une boite à outils (icones 32)
+--- un menu (icones 32)
 --- --- fichier / édition / A propos
 --- --- les actions associées au menu et toolbar
----  une icone application (icones 512)
----  dans le layout mid-W
+--- une icone application (icones 512)
+--- dans le layout mid-W
 --- --- un Treeview pour les données json
 --- --- un TreeView pour les dir
 --- --- splitter pour séparer et ajuster
----  un journal d'évènement appli (file et stdout)
+--- un journal d'évènement appli (file et stdout)
 --- --- log file par jour
 --- --- créer un journal de log et archiver les actions
 --- --- nettoyer le msg info
----  fenetre modale création entité
----  fenetre modale création cible pour une entité
----  fenetre modale boite à propos
+--- fenetre modale création entité
+--- fenetre modale création cible pour une entité
+--- fenetre modale boite à propos
 --- --- affiche le README file dans A propos
 
 ACTION
----  message bienvenue
----  parser conf
----  logger
----  affiche dir
----  boite dialogue fermeture
----  fenetre modale création entité (via designer6)
----  fenetre modale création cible (via designer6)
----  fenetre modale A propos (via designer6)
+--- message bienvenue
+--- parser conf
+--- logger
+--- affiche dir
+--- boite dialogue fermeture
+--- fenetre modale création entité (via designer6)
+--- fenetre modale création cible (via designer6)
+--- fenetre modale A propos (via designer6)
 
 TODO
 - todo revoir box cible pour ajouter une cible à choisir parmi
