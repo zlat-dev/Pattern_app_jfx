@@ -25,7 +25,7 @@ import javafx.util.Duration;
 public class Lanceur extends Application {
 
     public static final String APPLICATION_ICON =
-            "ressources/ico.png";
+            "ressources/ico64.png";
     public static final String SPLASH_IMAGE =
             "ressources/splashscreen.png";
 

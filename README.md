@@ -12,18 +12,19 @@ But pédagogique personnel pour apprendre JFX.
 L'espace de travail contient :
 
 - `src`: the folder to maintain sources
+- `bin`: the folder to maintain binaries
 - `lib`: the folder to maintain dependencies
 
 ## Dependency Management
 
 - `/lib` : la version JFX correspondant au SDK utilisé
-- `/bin/ressources` : des fichiers compléments (fonts, icons ...)
+- `/bin/ressources` : les fichiers compléments (fonts, icons ...)
 
 ## Tasks
 
 ORGANISATION
-OK- un splash (source https://coderscratchpad.com/creating-splash-screens-with-javafx/)
---- splashscreen (https://gist.github.com/jewelsea/2305098)
+- OK --- un splash (source https://coderscratchpad.com/creating-splash-screens-with-javafx/)
+- OK --- splashscreen (https://gist.github.com/jewelsea/2305098)
 --- une vérif de l'appli pendant le splash
 --- une fenètre principale
 --- une feuille de style en css
