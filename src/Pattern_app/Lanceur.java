@@ -1,8 +1,10 @@
-/** ----------------------------------------------------------------
+/* ----------------------------------------------------------------
 Lanceur.java
 20250826
 @Zlatko
--------------------------------------------------------------------- */
+------------------------------------------------------------------- */
+// ----------------------------------------------------------------
+// paquet
 package Pattern_app;
 // ----------------------------------------------------------------
 // modules importés
@@ -21,11 +23,13 @@ import javafx.scene.paint.Color;
 import javafx.stage.*;
 import javafx.util.Duration;
 
-
+// ----------------------------------------------------------------
+// Classe principale
 public class Lanceur extends Application {
-
+    // ----------------------------------------------------------------
+    // Attributs
     public static final String APPLICATION_ICON =
-            "/ressources/ico64.png";
+            "ressources/ico64.png";
     public static final String SPLASH_IMAGE =
             "ressources/splashscreen.png";
 
@@ -36,35 +40,58 @@ public class Lanceur extends Application {
     private static final int SPLASH_WIDTH = 676;
     private static final int SPLASH_HEIGHT = 227;
 
+    /* ----------------------------------------------------------------
+    
+    main
+
+    ------------------------------------------------------------------- */
     public static void main(String[] args) throws Exception {
         launch(args);
     }
+    
+    /* ----------------------------------------------------------------
+    
+    Splashscreen
 
+    ------------------------------------------------------------------- */
+
+    // ----------------------------------------------------------------
+    // Surcharge de la classe Application init()
+    // Les composants
     @Override
     public void init() {
         ImageView splash = new ImageView(new Image(
                 SPLASH_IMAGE
         ));
         loadProgress = new ProgressBar();
-        loadProgress.setPrefWidth(SPLASH_WIDTH + 40);
-        progressText = new Label("Will find friends for peanuts . . .");
+        loadProgress.setPrefWidth(SPLASH_WIDTH + 42);
+        loadProgress.setPrefHeight(10);
+        progressText = new Label("Vérification de l'intégrité du programme ... ");
         splashLayout = new VBox();
         splashLayout.getChildren().addAll(splash, loadProgress, progressText);
         progressText.setAlignment(Pos.CENTER);
+        progressText.setStyle(
+                "-fx-font-size: 10;" +
+                "-fx-font-style: italic;" + 
+                "-fx-text-fill: white;"
+        );
         splashLayout.setStyle(
-                "-fx-padding: 5; " +
-                "-fx-background-color: cornsilk; " +
-                "-fx-border-width:5; " +
+                "-fx-padding: 2; " +
+                "-fx-background-color: black; " +
+                "-fx-border-width:2; " +
                 "-fx-border-color: " +
                     "linear-gradient(" +
                         "to bottom, " +
-                        "chocolate, " +
-                        "derive(chocolate, 50%)" +
+                        "darkslategray, " +
+                        "derive(darkslategray, 50%)" +
                     ");"
         );
         splashLayout.setEffect(new DropShadow());
     }
 
+    // ----------------------------------------------------------------
+    // Surcharge de la classe Application start()
+    // Insérer ici la nature de la vérification
     @Override
     public void start(final Stage initStage) throws Exception {
         final Task<ObservableList<String>> friendTask = new Task<ObservableList<String>>() {
@@ -79,16 +106,16 @@ public class Lanceur extends Application {
                                 "Bombur", "Dori", "Nori", "Ori"
                         );
 
-                updateMessage("Finding friends . . .");
+                updateMessage("Composant vérifié ... ");
                 for (int i = 0; i < availableFriends.size(); i++) {
                     Thread.sleep(400);
                     updateProgress(i + 1, availableFriends.size());
                     String nextFriend = availableFriends.get(i);
                     foundFriends.add(nextFriend);
-                    updateMessage("Finding friends . . . found " + nextFriend);
+                    updateMessage("Composant vérifié ... " + nextFriend);
                 }
                 Thread.sleep(400);
-                updateMessage("All friends found.");
+                updateMessage("Tous les composants ont été vérifiés.");
 
                 return foundFriends;
             }
@@ -102,22 +129,8 @@ public class Lanceur extends Application {
         new Thread(friendTask).start();
     }
 
-    private void showMainStage(
-            ReadOnlyObjectProperty<ObservableList<String>> friends
-    ) {
-        mainStage = new Stage(StageStyle.DECORATED);
-        mainStage.setTitle("My Friends");
-        mainStage.getIcons().add(new Image(
-                APPLICATION_ICON
-        ));
-
-        final ListView<String> peopleView = new ListView<>();
-        peopleView.itemsProperty().bind(friends);
-
-        mainStage.setScene(new Scene(peopleView));
-        mainStage.show();
-    }
-
+    // ----------------------------------------------------------------
+    // Affichage, travail et disparition du splash
     private void showSplash(
             final Stage initStage,
             Task<?> task,
@@ -152,5 +165,29 @@ public class Lanceur extends Application {
 
     public interface InitCompletionHandler {
         void complete();
+    }
+
+    /* ----------------------------------------------------------------
+    
+    Application
+
+    ------------------------------------------------------------------- */
+
+    // ----------------------------------------------------------------
+    // Affiche la fenètre principale
+    private void showMainStage(
+            ReadOnlyObjectProperty<ObservableList<String>> friends
+    ) {
+        mainStage = new Stage(StageStyle.DECORATED);
+        mainStage.setTitle("Mes composants");
+        mainStage.getIcons().add(new Image(
+                APPLICATION_ICON
+        ));
+
+        final ListView<String> peopleView = new ListView<>();
+        peopleView.itemsProperty().bind(friends);
+
+        mainStage.setScene(new Scene(peopleView));
+        mainStage.show();
     }
 }
