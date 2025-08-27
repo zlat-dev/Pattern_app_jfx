@@ -25,7 +25,7 @@ import javafx.util.Duration;
 public class Lanceur extends Application {
 
     public static final String APPLICATION_ICON =
-            "ressources/ico64.png";
+            "/ressources/ico64.png";
     public static final String SPLASH_IMAGE =
             "ressources/splashscreen.png";
 
@@ -46,7 +46,7 @@ public class Lanceur extends Application {
                 SPLASH_IMAGE
         ));
         loadProgress = new ProgressBar();
-        loadProgress.setPrefWidth(SPLASH_WIDTH - 20);
+        loadProgress.setPrefWidth(SPLASH_WIDTH + 40);
         progressText = new Label("Will find friends for peanuts . . .");
         splashLayout = new VBox();
         splashLayout.getChildren().addAll(splash, loadProgress, progressText);
