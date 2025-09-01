@@ -26,7 +26,7 @@ ORGANISATION
 - OK --- un splash (source https://coderscratchpad.com/creating-splash-screens-with-javafx/)
 - OK --- splashscreen (https://gist.github.com/jewelsea/2305098)
 --- une vérif de l'appli pendant le splash
---- une fenètre principale
+- OK --- une fenètre principale
 --- une feuille de style en css
 --- layout conteneur et sous blocs (hors menu, tool, status) / 
 --- une barre de status en bas avec :
