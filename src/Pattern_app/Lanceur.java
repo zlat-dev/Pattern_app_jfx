@@ -1,8 +1,8 @@
 /* ----------------------------------------------------------------
-Lanceur.java
-20250826
-@Zlatko
-------------------------------------------------------------------- */
+* Lanceur.java
+* 20250826
+* @Zlatko
+* ----------------------------------------------------------------- */
 // ----------------------------------------------------------------
 // paquet
 package Pattern_app;
@@ -20,46 +20,46 @@ import javafx.scene.effect.DropShadow;
 import javafx.scene.image.*;
 import javafx.scene.layout.*;
 import javafx.scene.paint.Color;
+import javafx.scene.text.Font;
 import javafx.stage.*;
 import javafx.util.Duration;
-
 // ----------------------------------------------------------------
 // Classe principale
 public class Lanceur extends Application {
     // ----------------------------------------------------------------
     // Attributs / variables
-
-    //pour le splash
-    public static final String APPLICATION_ICON =
-            "ressources/ico64.png";
+    // pour le splash
     public static final String SPLASH_IMAGE =
             "ressources/splashscreen.png";
     private Pane splashLayout;
     private ProgressBar loadProgress;
     private Label progressText;
-    private Stage mainStage;
+    private Stage splashStage;
     private static final int SPLASH_WIDTH = 676;
     private static final int SPLASH_HEIGHT = 227;
-
+    // pour la fenetre principale
+    public static final String APPLICATION_ICON =
+            "ressources/ico64.png";
+    private StackPane principaleLayout;
+    private Stage principaleStage;
     /* ----------------------------------------------------------------
-    
-    main
-
-    ------------------------------------------------------------------- */
+    *
+    * main
+    *
+    * ----------------------------------------------------------------- */
     public static void main(String[] args) throws Exception {
         launch(args);
     }
-    
     /* ----------------------------------------------------------------
-    
-    Splashscreen
-
-    ------------------------------------------------------------------- */
-
+    *
+    * surcharge init, start et lance le thread splash
+    *
+    * ----------------------------------------------------------------- */
     // ----------------------------------------------------------------
     // Surcharge de la classe Application init()
     // Les composants
     @Override
+    // prépare les formes
     public void init() {
         //initialise le splash avec ses composants et leur style
         ImageView splash = new ImageView(new Image(
@@ -89,20 +89,55 @@ public class Lanceur extends Application {
                     ");"
         );
         splashLayout.setEffect(new DropShadow());
-    }
 
+        // initialise la fenetre principale avec ses composants et leur style
+        principaleLayout = new StackPane();
+        // Create a label
+        Label label = new Label("Chargement de l'application");
+        // Set a larger font size
+        label.setFont(Font.font(24));
+        // Add the label to the parent StackPane
+        principaleLayout.getChildren().add(label);
+
+        Pane pane = new Pane();
+        // pane.setPrefSize(1024, 768);
+        pane.setStyle("-fx-background-color: #1e1e1e;");
+        principaleLayout.getChildren().add(pane);
+        Button element1 = new Button("Click Me");
+        element1.setLayoutX(62.57);
+        element1.setLayoutY(59.19);
+        element1.setPrefWidth(105.81);
+        element1.setPrefHeight(29.00);
+        element1.setDisable(false);
+        element1.setStyle("-fx-background-color: #2e2e2e; -fx-text-fill: #D9D9D9; -fx-border-color: #979797; -fx-border-radius: 4px; -fx-background-radius: 4px; -fx-border-width: 1px;");
+        // element1.addEventFilter(MouseEvent.MOUSE_PRESSED, e -> { element1.setBackground(new Background(new BackgroundFill(Color.web("#fc0404ff"), new CornerRadii(4.00), null))); });
+        // element1.addEventFilter(MouseEvent.MOUSE_RELEASED, e -> { element1.setBackground(new Background(new BackgroundFill(Color.web("#fc0404ff"), new CornerRadii(4.00), null))); });
+        principaleLayout.getChildren().add(element1);
+
+        principaleLayout.setStyle(
+                "-fx-padding: 2; " +
+                "-fx-background-color: black; " +
+                "-fx-border-width:2; " +
+                "-fx-border-color: " +
+                    "linear-gradient(" +
+                        "to bottom, " +
+                        "darkslategray, " +
+                        "derive(darkslategray, 50%)" +
+                    ");"
+        );
+    }
     // ----------------------------------------------------------------
     // Surcharge de la classe Application start()
     // Insérer ici la nature de la vérification
     @Override
+    //lance le traitement de l'appli
     public void start(final Stage initStage) throws Exception {
-        //lance le traitement de l'appli
         //construit un thread
         final Task<ObservableList<String>> friendTask = new Task<ObservableList<String>>() {
 
             @Override
-            protected ObservableList<String> call() throws InterruptedException {
-                //construit le thread prévu pendant le splash
+            //construit le thread prévu pendant le splash
+            protected ObservableList<String> call() throws InterruptedException {                
                 ObservableList<String> foundFriends =
                         FXCollections.<String>observableArrayList();
                 ObservableList<String> availableFriends =
@@ -125,15 +160,22 @@ public class Lanceur extends Application {
             }
         };
 
-        // appelle l'affichage du splash
+        // appelle l'affichage du splash et le lance
         showSplash(
                 initStage,
                 friendTask,
-                () -> showMainStage(friendTask.valueProperty())
+                () -> showResultverifStage(friendTask.valueProperty())
         );
         new Thread(friendTask).start();
-    }
 
+        // appelle l'affichage de la fenètre principale
+        showFenetrePrincipale();
+    }
+    /* ----------------------------------------------------------------
+    *
+    * Affiche Splashscreen
+    *
+    * ----------------------------------------------------------------- */
     // ----------------------------------------------------------------
     // les fonctions séparées
     // Affichage, travail et disparition du splash
@@ -168,32 +210,44 @@ public class Lanceur extends Application {
         initStage.setAlwaysOnTop(true);
         initStage.show();
     }
-
     public interface InitCompletionHandler {
         void complete();
     }
-
-    /* ----------------------------------------------------------------
-    
-    Application
-
-    ------------------------------------------------------------------- */
-
     // ----------------------------------------------------------------
-    // Affiche la fenètre principale
-    private void showMainStage(
+    // Affiche la fenètre du résultat thread
+    private void showResultverifStage(
             ReadOnlyObjectProperty<ObservableList<String>> friends
     ) {
-        mainStage = new Stage(StageStyle.DECORATED);
-        mainStage.setTitle("Mes composants");
-        mainStage.getIcons().add(new Image(
+        splashStage = new Stage(StageStyle.DECORATED);
+        splashStage.setTitle("Vérification des composants");
+        splashStage.getIcons().add(new Image(
                 APPLICATION_ICON
         ));
 
         final ListView<String> peopleView = new ListView<>();
         peopleView.itemsProperty().bind(friends);
 
-        mainStage.setScene(new Scene(peopleView));
-        mainStage.show();
+        splashStage.setScene(new Scene((peopleView), 600, 400));
+        splashStage.show();
+    }
+    /* ----------------------------------------------------------------
+    *
+    * Affiche Application principale
+    *
+    * ----------------------------------------------------------------- */
+    // ----------------------------------------------------------------
+    // Affiche la fenètre principale
+    private void showFenetrePrincipale() {  
+        // pour la fenètre principale, prépare le stage
+        principaleStage = new Stage(StageStyle.DECORATED);
+        principaleStage.setTitle("Pattern_app");
+        principaleStage.getIcons().add(new Image(
+                APPLICATION_ICON
+        ));
+        // affecte le stage à une scène
+        Scene principaleScene = new Scene(principaleLayout, 1324, 768);
+        principaleStage.setScene(principaleScene);
+        principaleStage.centerOnScreen();
+        principaleStage.show();
     }
 }
