@@ -27,12 +27,13 @@ import javafx.util.Duration;
 // Classe principale
 public class Lanceur extends Application {
     // ----------------------------------------------------------------
-    // Attributs
+    // Attributs / variables
+
+    //pour le splash
     public static final String APPLICATION_ICON =
             "ressources/ico64.png";
     public static final String SPLASH_IMAGE =
             "ressources/splashscreen.png";
-
     private Pane splashLayout;
     private ProgressBar loadProgress;
     private Label progressText;
@@ -60,6 +61,7 @@ public class Lanceur extends Application {
     // Les composants
     @Override
     public void init() {
+        //initialise le splash avec ses composants et leur style
         ImageView splash = new ImageView(new Image(
                 SPLASH_IMAGE
         ));
@@ -94,9 +96,13 @@ public class Lanceur extends Application {
     // Insérer ici la nature de la vérification
     @Override
     public void start(final Stage initStage) throws Exception {
+        //lance le traitement de l'appli
+        //construit un thread
         final Task<ObservableList<String>> friendTask = new Task<ObservableList<String>>() {
+
             @Override
             protected ObservableList<String> call() throws InterruptedException {
+                //construit le thread prévu pendant le splash
                 ObservableList<String> foundFriends =
                         FXCollections.<String>observableArrayList();
                 ObservableList<String> availableFriends =
@@ -105,7 +111,6 @@ public class Lanceur extends Application {
                                 "Dwalin", "Balin", "Bifur", "Bofur",
                                 "Bombur", "Dori", "Nori", "Ori"
                         );
-
                 updateMessage("Composant vérifié ... ");
                 for (int i = 0; i < availableFriends.size(); i++) {
                     Thread.sleep(400);
@@ -116,11 +121,11 @@ public class Lanceur extends Application {
                 }
                 Thread.sleep(400);
                 updateMessage("Tous les composants ont été vérifiés.");
-
                 return foundFriends;
             }
         };
 
+        // appelle l'affichage du splash
         showSplash(
                 initStage,
                 friendTask,
@@ -130,6 +135,7 @@ public class Lanceur extends Application {
     }
 
     // ----------------------------------------------------------------
+    // les fonctions séparées
     // Affichage, travail et disparition du splash
     private void showSplash(
             final Stage initStage,
