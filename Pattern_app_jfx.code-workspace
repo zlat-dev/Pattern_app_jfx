@@ -22,6 +22,14 @@
 		"jdk.runConfig.vmOptions": "--module-path lib/javafx-sdk-24.0.2/lib/ --add-modules javafx.controls,javafx.fxml,javafx.graphics",
 		"java.format.settings.url": ".vscode/java-formatter.xml",
 		"javafx.libPath": "",
-		"java.configuration.runtimes": []
+		"java.configuration.runtimes": [],
+		"sqltools.connections": [
+			{
+				"previewLimit": 50,
+				"driver": "SQLite",
+				"name": "Pattern_app_connect",
+				"database": "data/database.db"
+			}
+		]
 	}
 }

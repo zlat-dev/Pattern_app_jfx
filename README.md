@@ -44,7 +44,8 @@ ORGANISATION
 --- --- les actions associées au menu et toolbar
 --- une icone application (icones 512)
 --- dans le layout mid-W
---- --- un Treeview pour les données json
+- OK --- --- Création bdd sqlite3
+--- --- un Treeview pour les données json ou sqlite3
 --- --- un TreeView pour les dir
 --- --- splitter pour séparer et ajuster
 --- un journal d'évènement appli (file et stdout)
