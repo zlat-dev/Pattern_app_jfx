@@ -27,7 +27,7 @@ ORGANISATION
 - OK --- splashscreen (https://gist.github.com/jewelsea/2305098)
 --- une vérif de l'appli pendant le splash
 - OK --- une fenètre principale
---- une feuille de style en css
+- OK --- une feuille de style en css
 --- layout conteneur et sous blocs (hors menu, tool, status) / 
 --- une barre de status en bas avec :
 --- --- un message timé

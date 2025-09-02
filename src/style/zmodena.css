@@ -1,0 +1,64 @@
+
+
+/*******************************************************************************
+ *                                                                             *
+ * THEMING INSTRUCTIONS                                                       *
+ *                                                                             *
+ *******************************************************************************
+
+
+/*******************************************************************************
+ *                                                                             *
+ * CSS Styles for core infrastructure bits.  The .root section provides the    *
+ * overall default colors used by the rest of the sections.                    *
+ *                                                                             *
+ ******************************************************************************/
+
+ .root 
+{
+	-fx-border-color: blue;
+	/* -fx-border-width: 2px; */
+	/* -fx-border-radius: 5px; */
+	/* -fx-border-insets: 5px; */
+	/* -fx-padding: 10px; */
+	/* -fx-spacing: 5px; */
+	-fx-background-color: lightgray;
+	/* -fx-background-insets: 5px; */
+}
+
+/*******************************************************************************
+ *                                                                             *
+ * Common Styles                                                               *
+ *                                                                             *
+ * These are styles that give a standard look to a whole range of controls     *
+ *                                                                             *
+ ******************************************************************************/
+
+ /* ====   VBOX   =========================================================== */
+
+.vbox {
+   -fx-background-color: #706c6c;
+   -fx-padding: 20;
+   -fx-spacing: 10;
+}
+
+ /* ====   BOUTONS   ======================================================== */
+
+.button {
+    -fx-background-color: #007bff;
+    -fx-text-fill: white;
+    -fx-font-size: 10px;
+    -fx-padding: 10px 20px;
+    -fx-background-radius: 5px;
+}
+
+.button:hover {
+    -fx-background-color: #0056b3;
+}
+
+ /* ====   LABEL   ========================================================== */
+
+.label {
+    -fx-font-family: 'Noto Sans Light';
+    -fx-font-size: 10px;
+}

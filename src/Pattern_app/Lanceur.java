@@ -203,6 +203,10 @@ public class Lanceur extends Application {
 
         Scene splashScene = new Scene(splashLayout, Color.TRANSPARENT);
         final Rectangle2D bounds = Screen.getPrimary().getBounds();
+        
+        // Link the CSS file
+        splashScene.getStylesheets().add("style/zmodena.css");
+
         initStage.setScene(splashScene);
         initStage.setX(bounds.getMinX() + bounds.getWidth() / 2 - SPLASH_WIDTH / 2);
         initStage.setY(bounds.getMinY() + bounds.getHeight() / 2 - SPLASH_HEIGHT / 2);
@@ -227,7 +231,10 @@ public class Lanceur extends Application {
         final ListView<String> peopleView = new ListView<>();
         peopleView.itemsProperty().bind(friends);
 
-        splashStage.setScene(new Scene((peopleView), 600, 400));
+        // Add the StyleSheet to the Scene
+        Scene splashSceneVbox = new Scene((peopleView), 600, 400);
+        splashSceneVbox.getStylesheets().add("style/zmodena.css");
+        splashStage.setScene(splashSceneVbox);
         splashStage.show();
     }
     /* ----------------------------------------------------------------
@@ -246,6 +253,10 @@ public class Lanceur extends Application {
         ));
         // affecte le stage à une scène
         Scene principaleScene = new Scene(principaleLayout, 1324, 768);
+
+        // Link the CSS file
+        principaleScene.getStylesheets().add("style/zmodena.css");
+
         principaleStage.setScene(principaleScene);
         principaleStage.centerOnScreen();
         principaleStage.show();
