@@ -25,11 +25,12 @@ L'espace de travail contient :
 ORGANISATION
 - OK --- un splash (source https://coderscratchpad.com/creating-splash-screens-with-javafx/)
 - OK --- splashscreen (https://gist.github.com/jewelsea/2305098)
+--- bloquer l'accès appli pendant le splash
 --- une vérif de l'appli pendant le splash
 - OK --- une fenètre principale
 - OK --- une feuille de style en css
 --- layout conteneur et sous blocs (hors menu, tool, status) / 
---- une barre de status en bas avec :
+- OK --- une barre de status en bas avec :
 --- --- un message timé
 --- --- une barre de progression
 --- --- un label status notification
@@ -42,7 +43,7 @@ ORGANISATION
 --- un menu (icones 32)
 --- --- fichier / édition / A propos
 --- --- les actions associées au menu et toolbar
---- une icone application (icones 512)
+- OK --- une icone application (icones 64)
 --- dans le layout mid-W
 - OK --- --- Création bdd sqlite3
 --- --- un Treeview pour les données json ou sqlite3

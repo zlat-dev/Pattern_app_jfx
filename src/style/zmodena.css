@@ -36,7 +36,7 @@
 
  /* ====   VBOX   =========================================================== */
 
-.vbox {
+.hbox {
    -fx-background-color: #706c6c;
    -fx-padding: 20;
    -fx-spacing: 10;
@@ -47,9 +47,12 @@
 .button {
     -fx-background-color: #007bff;
     -fx-text-fill: white;
-    -fx-font-size: 10px;
-    -fx-padding: 10px 20px;
+    -fx-font-family: 'Noto Sans Light';
+    -fx-font-size: 11px;
+    -fx-padding: 6px 6px 6px 6px;
     -fx-background-radius: 5px;
+    -fx-border-width: 1px;
+    -fx-border-color: #007bff;
 }
 
 .button:hover {
@@ -60,14 +63,22 @@
 
 .label {
     -fx-font-family: 'Noto Sans Light';
-    -fx-font-size: 10px;
+    -fx-font-size: 11px;
+    -fx-text-fill: black;
+    -fx-opacity: 0.6;
 }
-
+.label-bright {
+    -fx-font-family: 'Noto Sans Light';
+    -fx-font-size: 11px;
+    -fx-opacity: 1;
+}
 
  /* ====   LIST VIEW   ====================================================== */
 
 .list-view .list-cell { 
     -fx-background-color: rgb(102, 102, 104); 
+    -fx-font-family: 'Noto Sans Light';
+    -fx-font-size: 11px;
     -fx-text-fill: rgb(29, 28, 28); 
     /* -fx-padding: 8 10;  */
 }
@@ -79,26 +90,36 @@
     -fx-text-fill: white; 
 }
 
+ /* ====   STATUS BAR (HBOX)    ============================================= */
+
+.statusBar {
+    -fx-background-color: #ECECEC;
+    /* -fx-padding: 15;
+    -fx-spacing: 10; */
+}
+
+ /* ====   MENU BAR     ===================================================== */
+
+
+.menu-bar {
+    -fx-background-color: derive(#ECECEC,20%);
+}
+.context-menu {
+    -fx-background-color: derive(#ECECEC,50%);
+}
+.menu-bar {
+    -fx-font-size: 11pt;
+    -fx-font-family: 'Noto Sans Light';
+    -fx-text-fill: black;
+    -fx-opacity: 0.9;
+}
+.menu .left-container {
+	-fx-background-color: #ECECEC;
+}
+
  /* ====   A VOIR  ========================================================== */
 
-
-.background {
-    -fx-background-color: #1d1d1d;
-}
-
-.label {
-    -fx-font-size: 11pt;
-    -fx-font-family: "Segoe UI Semibold";
-    -fx-text-fill: white;
-    -fx-opacity: 0.6;
-}
-
-.label-bright {
-    -fx-font-size: 11pt;
-    -fx-font-family: "Segoe UI Semibold";
-    -fx-text-fill: white;
-    -fx-opacity: 1;
-}
+/* 
 
 .label-header {
     -fx-font-size: 32pt;
@@ -153,35 +174,13 @@
     -fx-padding: 1 0 0 0;
 }
 
-.menu-bar {
-    -fx-background-color: derive(#1d1d1d,20%);
-}
 
-.context-menu {
-    -fx-background-color: derive(#1d1d1d,50%);
-}
-
-.menu-bar .label {
-    -fx-font-size: 14pt;
-    -fx-font-family: "Segoe UI Light";
-    -fx-text-fill: white;
-    -fx-opacity: 0.9;
-}
-
-.menu .left-container {
-	-fx-background-color: black;
-}
 
 .text-field {
     -fx-font-size: 12pt;
     -fx-font-family: "Segoe UI Semibold";
 }
 
-/* 
- * Metro style Push Button
- * Author: Pedro Duque Vieira
- * http://pixelduke.wordpress.com/2012/10/23/jmetro-windows-8-controls-on-java/
- */
 .button {
     -fx-padding: 5 22 5 22;   
     -fx-border-color: #e2e2e2;
@@ -224,4 +223,5 @@
 
 .button:default:hover {
     -fx-background-color: derive(-fx-focus-color,30%);
-}
+} 
+*/

@@ -13,6 +13,7 @@ import javafx.application.Application;
 import javafx.beans.property.ReadOnlyObjectProperty;
 import javafx.collections.*;
 import javafx.concurrent.*;
+import javafx.event.ActionEvent;
 import javafx.geometry.*;
 import javafx.scene.Scene;
 import javafx.scene.control.*;
@@ -37,10 +38,13 @@ public class Lanceur extends Application {
     private Stage splashStage;
     private static final int SPLASH_WIDTH = 676;
     private static final int SPLASH_HEIGHT = 227;
+    // pour la listview suite splash
+    private Button zb;
+    private HBox zzhbox;
     // pour la fenetre principale
     public static final String APPLICATION_ICON =
             "ressources/ico64.png";
-    private StackPane principaleLayout;
+    private BorderPane principaleLayout;
     private Stage principaleStage;
     /* ----------------------------------------------------------------
     *
@@ -91,7 +95,7 @@ public class Lanceur extends Application {
         splashLayout.setEffect(new DropShadow());
 
         // initialise la fenetre principale avec ses composants et leur style
-        principaleLayout = new StackPane();
+        principaleLayout = new BorderPane();
         // Create a label
         Label label = new Label("Chargement de l'application");
         // Set a larger font size
@@ -143,7 +147,7 @@ public class Lanceur extends Application {
                 ObservableList<String> availableFriends =
                         FXCollections.observableArrayList(
                                 "Fili", "Kili", "Oin", "Gloin", "Thorin",
-                                "Dwalin", "Balin", "Bifur", "Bofur",
+                                // "Dwalin", "Balin", "Bifur", "Bofur",
                                 "Bombur", "Dori", "Nori", "Ori"
                         );
                 updateMessage("Composant vérifié ... ");
@@ -231,8 +235,15 @@ public class Lanceur extends Application {
         final ListView<String> peopleView = new ListView<>();
         peopleView.itemsProperty().bind(friends);
 
+        zb = new Button("Fermer");
+        zb.setOnAction((ActionEvent event) -> {
+            // System.out.println("Hello World");
+            splashStage.close();
+        });
+        zzhbox = new HBox(peopleView, zb);
+
         // Add the StyleSheet to the Scene
-        Scene splashSceneVbox = new Scene((peopleView), 600, 400);
+        Scene splashSceneVbox = new Scene((zzhbox));
         splashSceneVbox.getStylesheets().add("style/zmodena.css");
         splashStage.setScene(splashSceneVbox);
         splashStage.show();
@@ -245,6 +256,7 @@ public class Lanceur extends Application {
     // ----------------------------------------------------------------
     // Affiche la fenètre principale
     private void showFenetrePrincipale() {  
+        // ----------------------------------------------------------------
         // pour la fenètre principale, prépare le stage
         principaleStage = new Stage(StageStyle.DECORATED);
         principaleStage.setTitle("Pattern_app");
@@ -254,9 +266,42 @@ public class Lanceur extends Application {
         // affecte le stage à une scène
         Scene principaleScene = new Scene(principaleLayout, 1324, 768);
 
+        // ----------------------------------------------------------------
         // Link the CSS file
         principaleScene.getStylesheets().add("style/zmodena.css");
 
+        // ----------------------------------------------------------------
+        // Barre de statut (HBox)
+        Label statusLabel = new Label("Ready");
+        Label extraInfo = new Label(" — 0%");
+        HBox statusBar = new HBox(10, statusLabel, extraInfo);
+        statusBar.getStyleClass().add("statusBar");
+        statusBar.setPadding(new Insets(6));
+        statusBar.setAlignment(Pos.CENTER_LEFT);
+        //statusBar.setStyle("-fx-background-color: #ECECEC; -fx-border-color: #BDBDBD;");
+        principaleLayout.setBottom(statusBar);  
+
+        // ----------------------------------------------------------------
+        // Create MenuBar
+        MenuBar menuBar = new MenuBar();
+        menuBar.getStyleClass().add("menu-bar");
+        // Create File Menu
+        Menu fileMenu = new Menu("Fichier");
+        // Create Menu Item
+        MenuItem exitMenuItem = new MenuItem("Quitter");
+        exitMenuItem.setOnAction((ActionEvent event) -> {
+            // System.out.println("Hello World");
+            System.exit(0);
+        });
+        // Add Exit Menu Item to the File Menu
+        fileMenu.getItems().add(exitMenuItem);
+        // Add File menu to the MenuBar
+        menuBar.getMenus().add(fileMenu);
+        // Add MenuBar to the Top of the BorderPane
+        principaleLayout.setTop(menuBar);
+
+        // ----------------------------------------------------------------
+        // Affiche
         principaleStage.setScene(principaleScene);
         principaleStage.centerOnScreen();
         principaleStage.show();
